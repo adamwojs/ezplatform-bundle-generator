@@ -13,10 +13,16 @@
     "symfony/filesystem": "^4.3"
   },
   "require-dev": {
+    "composer/composer": "^1.0@dev",
     "phpunit/phpunit": "^8.2",
     "friendsofphp/php-cs-fixer": "~2.15.0"
   },
   "bin": ["bin/ezplatform-bundle-generator"],
+  "autoload": {
+    "psr-4": {
+      "AdamWojs\\EzPlatformBundleGenerator\\": "src"
+    }
+  },
   "scripts": {
     "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"
   },
