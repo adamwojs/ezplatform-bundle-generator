@@ -1,0 +1,38 @@
+{
+  "name": "__VENDOR_NAME__/__PACKAGE_NAME__",
+  "license": "GPL-2.0-only",
+  "keywords": [
+    "ezplatform"
+  ],
+  "type": "ezplatform-bundle",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^7.3",
+    "ezsystems/ezpublish-kernel": "^8.0@dev"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.2",
+    "friendsofphp/php-cs-fixer": "~2.15.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "__VENDOR_NAMESPACE__\\__BUNDLE_NAME__Bundle\\": "src/bundle/",
+      "__VENDOR_NAMESPACE__\\__BUNDLE_NAME__\\": "src/lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "__VENDOR_NAMESPACE__\\__BUNDLE_NAME__Bundle\\Tests\\": "tests/bundle/",
+      "__VENDOR_NAMESPACE__\\__BUNDLE_NAME__\\Tests\\": "tests/lib/"
+    }
+  },
+  "scripts": {
+    "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
