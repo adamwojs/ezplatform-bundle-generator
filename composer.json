@@ -16,6 +16,7 @@
     "phpunit/phpunit": "^8.2",
     "friendsofphp/php-cs-fixer": "~2.15.0"
   },
+  "bin": ["bin/ezplatform-bundle-generator"],
   "scripts": {
     "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"
   },
