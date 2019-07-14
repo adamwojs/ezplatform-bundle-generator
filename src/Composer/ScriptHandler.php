@@ -31,7 +31,7 @@ final class ScriptHandler
         $defaultPackageName = BundleGenerator::getDefaultPackageName();
 
         return $io->ask(
-            "Package name e.g ezplatform-page-builder [$defaultPackageName]",
+            "Package name e.g ezplatform-page-builder [$defaultPackageName]: ",
             $defaultPackageName
         );
     }
