@@ -1,6 +1,7 @@
 {
   "name": "adamwojs/ezplatform-bundle-generator",
   "license": "GPL-2.0-only",
+  "description": "Symfony Bundle generator for eZ Platform based projects",
   "keywords": [
     "ezplatform", "symfony"
   ],
