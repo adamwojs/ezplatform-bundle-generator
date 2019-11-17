@@ -16,7 +16,7 @@
   "require-dev": {
     "composer/composer": "^1.0@dev",
     "phpunit/phpunit": "^8.2",
-    "friendsofphp/php-cs-fixer": "~2.15.0"
+    "ezsystems/ezplatform-code-style": "^0.1.0"
   },
   "bin": ["bin/ezplatform-bundle-generator"],
   "autoload": {

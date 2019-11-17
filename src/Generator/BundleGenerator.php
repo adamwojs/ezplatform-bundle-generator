@@ -73,7 +73,7 @@ final class BundleGenerator
     public static function getDefaultBundleName(?string $packageName): ?string
     {
         if ($packageName !== null) {
-            return implode('', array_map(function(string $chunk) {
+            return implode('', array_map(function (string $chunk) {
                 if (strtolower($chunk) === 'ezplatform') {
                     return 'EzPlatform';
                 }
