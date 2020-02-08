@@ -35,6 +35,6 @@ in the `config/bundles.php` file of your project:
 
 return [
     // ...
-    __VENDOR_NAMESPACE__\__BUNDLE_NAME__::class => ['all' => true],
+    __VENDOR_NAMESPACE__\__BUNDLE_NAME__\__BUNDLE_NAME__::class => ['all' => true],
 ];
 ```
