@@ -1,0 +1,20 @@
+<phpunit
+        backupGlobals="false"
+        backupStaticAttributes="false"
+        bootstrap="vendor/autoload.php"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        colors="true">
+    <testsuites>
+        <testsuite name="__VENDOR_NAMESPACE__\Platform\Bundle\__BUNDLE_NAME__\">
+            <directory>tests/bundle</directory>
+        </testsuite>
+        <testsuite name="__VENDOR_NAMESPACE__\Platform\Integration\__BUNDLE_NAME__\">
+            <directory>tests/integration</directory>
+        </testsuite>
+        <testsuite name="__VENDOR_NAMESPACE__\Platform\__BUNDLE_NAME__\">
+            <directory>tests/lib</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
