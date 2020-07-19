@@ -1,0 +1,48 @@
+{
+  "name": "__VENDOR_NAME__/__PACKAGE_NAME__",
+  "license": "GPL-2.0-only",
+  "type": "ezplatform-bundle",
+  "keywords": [
+    "ezplatform"
+  ],
+  "require": {
+    "php": "^7.3",
+    "ezsystems/ezplatform-kernel": "^1.1@dev",
+    "symfony/config": "^5.0",
+    "symfony/dependency-injection": "^5.0",
+    "symfony/event-dispatcher": "^5.0",
+    "symfony/event-dispatcher-contracts": "^2.0",
+    "symfony/http-foundation": "^5.0",
+    "symfony/http-kernel": "^5.0",
+    "symfony/yaml": "^5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.5",
+    "ezsystems/ezplatform-code-style": "^0.2",
+    "friendsofphp/php-cs-fixer": "^2.16"
+  },
+  "autoload": {
+    "psr-4": {
+      "__VENDOR_NAMESPACE__\\Platform\\Bundle\\__BUNDLE_NAME__\\": "src/bundle/",
+      "__VENDOR_NAMESPACE__\\Platform\\Contracts\\__BUNDLE_NAME__\\": "src/contracts/",
+      "__VENDOR_NAMESPACE__\\Platform\\__BUNDLE_NAME__\\": "src/lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "__VENDOR_NAMESPACE__\\Platform\\Tests\\Bundle\\__BUNDLE_NAME__\\": "tests/bundle/",
+      "__VENDOR_NAMESPACE__\\Platform\\Tests\\Integration\\__BUNDLE_NAME__\\": "tests/integration/",
+      "__VENDOR_NAMESPACE__\\Platform\\Tests\\__BUNDLE_NAME__\\": "tests/lib/"
+    }
+  },
+  "scripts": {
+    "fix-cs": "php-cs-fixer fix -v --show-progress=estimating",
+    "check-cs": "php-cs-fixer fix --dry-run -v --show-progress=estimating",
+    "unit-tests": "phpunit -c phpunit.xml.dist"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
