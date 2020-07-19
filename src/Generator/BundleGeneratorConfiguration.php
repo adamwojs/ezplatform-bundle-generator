@@ -7,6 +7,9 @@ namespace AdamWojs\EzPlatformBundleGenerator\Generator;
 final class BundleGeneratorConfiguration
 {
     /** @var string|null */
+    private $skeletonName;
+
+    /** @var string|null */
     private $packageName;
 
     /** @var string|null */
@@ -20,6 +23,16 @@ final class BundleGeneratorConfiguration
 
     /** @var string|null */
     private $targetDir;
+
+    public function getSkeletonName(): ?string
+    {
+        return $this->skeletonName;
+    }
+
+    public function setSkeletonName(?string $skeletonName): void
+    {
+        $this->skeletonName = $skeletonName;
+    }
 
     public function getPackageName(): ?string
     {

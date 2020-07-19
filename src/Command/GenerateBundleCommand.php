@@ -52,6 +52,14 @@ final class GenerateBundleCommand extends Command
             InputOption::VALUE_REQUIRED,
             'e.g. EzPlatformPageBuilder'
         );
+
+        $this->addOption(
+            'skeleton-name',
+            null,
+            InputArgument::OPTIONAL,
+            'Skeleton name',
+            null
+        );
     }
 
     protected function interact(InputInterface $input, OutputInterface $output): void
@@ -112,6 +120,7 @@ final class GenerateBundleCommand extends Command
         $config = new BundleGeneratorConfiguration();
         $config->setTargetDir($input->getArgument('target-dir'));
         $config->setPackageName($input->getArgument('package-name'));
+        $config->setSkeletonName($input->getOption('skeleton-name'));
         $config->setVendorName($input->getOption('vendor-name'));
         $config->setVendorNamespace($input->getOption('vendor-namespace'));
         $config->setBundleName($input->getOption('bundle-name'));

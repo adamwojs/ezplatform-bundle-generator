@@ -4,27 +4,24 @@ declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformBundleGenerator\Generator;
 
+use FilesystemIterator;
+use Iterator;
+use RecursiveCallbackFilterIterator;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use SplFileInfo;
 use Symfony\Component\Filesystem\Filesystem;
 
 final class BundleGenerator
 {
-    private const FILE_TEMPLATES = [
-        '/src/bundle/DependencyInjection/__BUNDLE_NAME__Extension.php',
-        '/src/bundle/__BUNDLE_NAME__Bundle.php',
-        '/phpunit.xml.dist',
-        '/composer.json',
-        '/README.md',
-    ];
+    public const DEFAULT_SKELETON_NAME = '3rd-party';
 
-    private const FILE_NAME_TEMPLATES = [
-        '/src/bundle/DependencyInjection/__BUNDLE_NAME__Extension.php',
-        '/src/bundle/__BUNDLE_NAME__Bundle.php',
-    ];
+    private const SKELETON_DIRECTORY = __DIR__ . '/../../skeleton/';
 
     public function generate(BundleGeneratorConfiguration $config): void
     {
         $fs = new Filesystem();
-        $fs->mirror(__DIR__ . '/../../skeleton', $config->getTargetDir());
+        $fs->mirror($this->getSkeletonDirectory($config), $config->getTargetDir());
 
         $replacements = [
             '__PACKAGE_NAME__' => $config->getPackageName(),
@@ -33,18 +30,47 @@ final class BundleGenerator
             '__BUNDLE_NAME__' => $config->getBundleName(),
         ];
 
-        foreach (self::FILE_TEMPLATES as $filename) {
-            $content = strtr(file_get_contents($config->getTargetDir() . $filename), $replacements);
+        $iterator = $this->createSkeletonIterator($config->getTargetDir());
 
-            $fs->dumpFile($config->getTargetDir() . $filename, $content);
+        foreach ($iterator as $file) {
+            if (!$file->isDir()) {
+                $content = strtr(file_get_contents($file->getPathname()), $replacements);
+                $fs->dumpFile($file->getPathname(), $content);
+            }
         }
 
-        foreach (self::FILE_NAME_TEMPLATES as $filename) {
-            $fs->rename(
-                $config->getTargetDir() . $filename,
-                $config->getTargetDir() . strtr($filename, $replacements)
-            );
+        foreach ($iterator as $file) {
+            $fs->rename($file->getPathname(), strtr($file->getPathname(), $replacements), true);
         }
+    }
+
+    private function createSkeletonIterator(string $targetDir): Iterator
+    {
+        $excludedPaths = [
+            $targetDir . '/vendor',
+            $targetDir . '/composer.lock',
+        ];
+
+        $flags = FilesystemIterator::CURRENT_AS_FILEINFO | FilesystemIterator::SKIP_DOTS;
+
+        $iterator = new RecursiveCallbackFilterIterator(
+            new RecursiveDirectoryIterator($targetDir, $flags),
+            static function (SplFileInfo $file) use ($excludedPaths): bool {
+                return !in_array($file->getPathname(), $excludedPaths);
+            }
+        );
+
+        return new RecursiveIteratorIterator($iterator);
+    }
+
+    private function getSkeletonDirectory(BundleGeneratorConfiguration $config): string
+    {
+        $skeletonName = $config->getSkeletonName();
+        if (empty($skeletonName)) {
+            $skeletonName = self::DEFAULT_SKELETON_NAME;
+        }
+
+        return self::SKELETON_DIRECTORY . $skeletonName . '/';
     }
 
     public static function getDefaultPackageName(): string
@@ -83,5 +109,21 @@ final class BundleGenerator
         }
 
         return null;
+    }
+
+    public static function getAvailableSkeletons(): array
+    {
+        $skeletons = [];
+
+        $iterator = new FilesystemIterator(self::SKELETON_DIRECTORY);
+        foreach ($iterator as $fileInfo) {
+            if (!$fileInfo->isDir()) {
+                continue;
+            }
+
+            $skeletons[] = $fileInfo->getBasename();
+        }
+
+        return $skeletons;
     }
 }
