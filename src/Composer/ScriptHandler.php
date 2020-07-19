@@ -16,6 +16,7 @@ final class ScriptHandler
         $io = $event->getIO();
 
         $config = new BundleGeneratorConfiguration();
+        $config->setSkeletonName(self::askForSkeletonName($io));
         $config->setPackageName(self::askForPackageName($io, $config));
         $config->setVendorName(self::askForVendorName($io, $config));
         $config->setVendorNamespace(self::askForVendorNamespace($io, $config));
@@ -26,7 +27,7 @@ final class ScriptHandler
         $generator->generate($config);
     }
 
-    private static function askForPackageName(IOInterface $io, BundleGeneratorConfiguration $config): string
+    private static function askForPackageName(IOInterface $io, BundleGeneratorConfiguration $config): ?string
     {
         $defaultPackageName = BundleGenerator::getDefaultPackageName();
 
@@ -36,7 +37,7 @@ final class ScriptHandler
         );
     }
 
-    private static function askForVendorName(IOInterface $io, BundleGeneratorConfiguration $config): string
+    private static function askForVendorName(IOInterface $io, BundleGeneratorConfiguration $config): ?string
     {
         $defaultVendorName = BundleGenerator::getDefaultVendorName();
 
@@ -46,23 +47,37 @@ final class ScriptHandler
         );
     }
 
-    private static function askForVendorNamespace(IOInterface $io, BundleGeneratorConfiguration $config): string
+    private static function askForVendorNamespace(IOInterface $io, BundleGeneratorConfiguration $config): ?string
     {
         $defaultVendorNamespace = BundleGenerator::getDefaultVendorNamespace($config->getVendorName());
 
         return $io->ask(
-            'Bundle vendor namespace e.g EzSystems [' . ($defaultVendorNamespace ?? 'n/a') . ']: ',
+            'Bundle vendor namespace e.g Ibexa [' . ($defaultVendorNamespace ?? 'n/a') . ']: ',
             $defaultVendorNamespace
         );
     }
 
-    private static function askForBundleName(IOInterface $io, BundleGeneratorConfiguration $config): string
+    private static function askForBundleName(IOInterface $io, BundleGeneratorConfiguration $config): ?string
     {
         $defaultBundleName = BundleGenerator::getDefaultBundleName($config->getPackageName());
 
         return $io->ask(
             "Bundle name without 'Bundle' suffix e.g EzPlatformPageBuilder [" . ($defaultBundleName ?? 'n/a') . ']: ',
             $defaultBundleName
+        );
+    }
+
+    private static function askForSkeletonName(IOInterface $io): ?string
+    {
+        $skeletons = BundleGenerator::getAvailableSkeletons();
+        if (count($skeletons) === 1) {
+            return reset($skeletons);
+        }
+
+        return $io->select(
+            'Skeleton',
+            array_combine($skeletons, $skeletons),
+            BundleGenerator::DEFAULT_SKELETON_NAME
         );
     }
 }
