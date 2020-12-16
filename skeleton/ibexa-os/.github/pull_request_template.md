@@ -1,12 +1,17 @@
-> JIRA: [EZP-XXXXX](https://jira.ez.no/browse/EZP-XXXXX)
+| Question                                  | Answer
+| ----------------------------------------- | ------------------
+| **JIRA issue**                            | EZP-XXXXX
+| **Type**                                  | feature/bug/improvement
+| **Target eZ Platform version**            | `v3.x` - please update `x` accordingly
+| **BC breaks**                             | yes/no
+| **Doc needed**                            | yes/no
 
-### Description 
+<!-- Replace this comment with Pull Request description -->
 
-<!-- What problem are you trying to solve? How did you solve the problem? -->
-
-## Checklist
-
-- [ ] Code follows the code style of this project (use `$ composer fix-cs`).
-- [ ] Code is ready for a review.
-- [ ] Change requires a change to the documentation.
-
+#### Checklist:
+- [ ] Provided PR description.
+- [ ] Tested the solution manually.
+- [ ] Provided automated test coverage.
+- [ ] Checked that target branch is set correctly (master for features, the oldest supported for bugs).
+- [ ] Ran PHP CS Fixer for new PHP code (use `$ composer fix-cs`).
+- [ ] Asked for a review (ping `@ezsystems/php-dev-team`).
