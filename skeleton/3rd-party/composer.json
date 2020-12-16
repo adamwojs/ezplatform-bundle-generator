@@ -2,17 +2,17 @@
   "name": "__VENDOR_NAME__/__PACKAGE_NAME__",
   "license": "GPL-2.0-only",
   "keywords": [
-    "ezplatform"
+    "ibexa-dxp", "ezplatform"
   ],
-  "type": "ezplatform-bundle",
+  "type": "ibexa-bundle",
   "require": {
     "php": "^7.3",
-    "ezsystems/ezplatform-kernel": "^1.0",
-    "ezsystems/ezplatform-admin-ui": "^2.0"
+    "ezsystems/ezplatform-kernel": "^1.3",
+    "ezsystems/ezplatform-admin-ui": "^2.3"
   },
   "require-dev": {
     "phpunit/phpunit": "^8.2",
-    "ezsystems/ezplatform-code-style": "^0.1.0"
+    "ezsystems/ezplatform-code-style": "^0.3.0"
   },
   "autoload": {
     "psr-4": {
@@ -33,7 +33,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "1.0.x-dev"
+      "dev-main": "1.0.x-dev"
     }
   }
 }

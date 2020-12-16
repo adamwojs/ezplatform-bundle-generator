@@ -70,7 +70,7 @@ final class GenerateBundleCommand extends Command
             $defaultPackageName = BundleGenerator::getDefaultPackageName();
 
             $question = new Question(
-                "Package name e.g ezplatform-page-builder [$defaultPackageName]: ",
+                "Package name e.g ibexa-page-builder [$defaultPackageName]: ",
                 $defaultPackageName
             );
 
@@ -81,7 +81,7 @@ final class GenerateBundleCommand extends Command
             $defaultVendorName = BundleGenerator::getDefaultVendorName();
 
             $question = new Question(
-                'Package vendor name e.g ezsystems [' . ($defaultVendorName ?? 'n/a') . ']: ',
+                'Package vendor name e.g ibexa [' . ($defaultVendorName ?? 'n/a') . ']: ',
                 $defaultVendorName
             );
 
@@ -94,7 +94,7 @@ final class GenerateBundleCommand extends Command
             );
 
             $question = new Question(
-                'Bundle vendor namespace e.g EzSystems [' . ($defaultVendorNamespace ?? 'n/a') . ']: ',
+                'Bundle vendor namespace e.g Ibexa [' . ($defaultVendorNamespace ?? 'n/a') . ']: ',
                 $defaultVendorNamespace
             );
 
@@ -107,7 +107,7 @@ final class GenerateBundleCommand extends Command
             );
 
             $question = new Question(
-                "Bundle name without 'Bundle' suffix e.g EzPlatformPageBuilder [" . ($defaultBundleName ?? 'n/a') . ']: ',
+                "Bundle name without 'Bundle' suffix e.g IbexaPageBuilder [" . ($defaultBundleName ?? 'n/a') . ']: ',
                 $defaultBundleName
             );
 
