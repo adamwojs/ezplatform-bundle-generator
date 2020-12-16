@@ -32,7 +32,7 @@ final class ScriptHandler
         $defaultPackageName = BundleGenerator::getDefaultPackageName();
 
         return $io->ask(
-            "Package name e.g ezplatform-page-builder [$defaultPackageName]: ",
+            "Package name e.g ibexa-page-builder [$defaultPackageName]: ",
             $defaultPackageName
         );
     }
@@ -42,7 +42,7 @@ final class ScriptHandler
         $defaultVendorName = BundleGenerator::getDefaultVendorName();
 
         return $io->ask(
-            'Package vendor name e.g ezsystems [' . ($defaultVendorName ?? 'n/a') . ']: ',
+            'Package vendor name e.g ibexa [' . ($defaultVendorName ?? 'n/a') . ']: ',
             $defaultVendorName
         );
     }
@@ -62,7 +62,7 @@ final class ScriptHandler
         $defaultBundleName = BundleGenerator::getDefaultBundleName($config->getPackageName());
 
         return $io->ask(
-            "Bundle name without 'Bundle' suffix e.g EzPlatformPageBuilder [" . ($defaultBundleName ?? 'n/a') . ']: ',
+            "Bundle name without 'Bundle' suffix e.g IbexaPageBuilder [" . ($defaultBundleName ?? 'n/a') . ']: ',
             $defaultBundleName
         );
     }
