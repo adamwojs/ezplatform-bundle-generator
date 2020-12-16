@@ -7,13 +7,13 @@
         convertWarningsToExceptions="true"
         colors="true">
     <testsuites>
-        <testsuite name="__VENDOR_NAMESPACE__\Platform\Bundle\__BUNDLE_NAME__\">
+        <testsuite name="bundle">
             <directory>tests/bundle</directory>
         </testsuite>
-        <testsuite name="__VENDOR_NAMESPACE__\Platform\Integration\__BUNDLE_NAME__\">
+        <testsuite name="integration">
             <directory>tests/integration</directory>
         </testsuite>
-        <testsuite name="__VENDOR_NAMESPACE__\Platform\__BUNDLE_NAME__\">
+        <testsuite name="unit">
             <directory>tests/lib</directory>
         </testsuite>
     </testsuites>
