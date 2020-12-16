@@ -1,6 +1,6 @@
 | Question                                  | Answer
 | ----------------------------------------- | ------------------
-| **JIRA issue**                            | EZP-XXXXX
+| **JIRA issue**                            | EZEE-XXXXX
 | **Type**                                  | feature/bug/improvement
 | **Target eZ Platform version**            | `v3.x` - please update `x` accordingly
 | **BC breaks**                             | yes/no
