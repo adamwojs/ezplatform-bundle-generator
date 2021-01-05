@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
-namespace AdamWojs\EzPlatformBundleGenerator\Generator;
+namespace Ibexa\Platform\BundleGenerator\Generator;
 
 use FilesystemIterator;
 use Iterator;
@@ -14,9 +18,9 @@ use Symfony\Component\Filesystem\Filesystem;
 
 final class BundleGenerator
 {
-    public const DEFAULT_SKELETON_NAME = '3rd-party';
+    public const DEFAULT_SKELETON_NAME = 'ibexa-ee';
 
-    private const SKELETON_DIRECTORY = __DIR__ . '/../../skeleton/';
+    private const SKELETON_DIRECTORY = __DIR__ . '/../../../skeleton/';
 
     public function generate(BundleGeneratorConfiguration $config): void
     {
@@ -99,7 +103,7 @@ final class BundleGenerator
     public static function getDefaultBundleName(?string $packageName): ?string
     {
         if ($packageName !== null) {
-            return implode('', array_map(function (string $chunk) {
+            return implode('', array_map(static function (string $chunk) {
                 if (strtolower($chunk) === 'ezplatform') {
                     return 'EzPlatform';
                 }

@@ -8,7 +8,7 @@ foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../../vendor/autoload.
     }
 }
 
-use AdamWojs\EzPlatformBundleGenerator\Command\GenerateBundleCommand;
+use Ibexa\Platform\BundleGenerator\Command\GenerateBundleCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();

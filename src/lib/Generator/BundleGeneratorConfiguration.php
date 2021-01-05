@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
-namespace AdamWojs\EzPlatformBundleGenerator\Generator;
+namespace Ibexa\Platform\BundleGenerator\Generator;
 
 final class BundleGeneratorConfiguration
 {

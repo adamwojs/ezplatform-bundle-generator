@@ -1,11 +1,15 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
-namespace AdamWojs\EzPlatformBundleGenerator\Command;
+namespace Ibexa\Platform\BundleGenerator\Command;
 
-use AdamWojs\EzPlatformBundleGenerator\Generator\BundleGenerator;
-use AdamWojs\EzPlatformBundleGenerator\Generator\BundleGeneratorConfiguration;
+use Ibexa\Platform\BundleGenerator\Generator\BundleGenerator;
+use Ibexa\Platform\BundleGenerator\Generator\BundleGeneratorConfiguration;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -22,7 +26,7 @@ final class GenerateBundleCommand extends Command
         $this->addArgument(
             'package-name',
             InputArgument::OPTIONAL,
-            'Package name e.g ezplatform-page-builder'
+            'Package name e.g page-builder'
         );
 
         $this->addArgument(
@@ -36,21 +40,21 @@ final class GenerateBundleCommand extends Command
             'vendor-name',
             null,
             InputOption::VALUE_REQUIRED,
-            'Package vendor name e.g. ezsystems'
+            'Package vendor name e.g. ibexa'
         );
 
         $this->addOption(
             'vendor-namespace',
             null,
             InputOption::VALUE_REQUIRED,
-            'e.g. EzSystems'
+            'e.g. Ibexa'
         );
 
         $this->addOption(
             'bundle-name',
             null,
             InputOption::VALUE_REQUIRED,
-            'e.g. EzPlatformPageBuilder'
+            'e.g. IbexaPageBuilder'
         );
 
         $this->addOption(

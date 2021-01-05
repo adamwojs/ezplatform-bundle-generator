@@ -1,13 +1,17 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
-namespace AdamWojs\EzPlatformBundleGenerator\Composer;
+namespace Ibexa\Platform\BundleGenerator\Composer;
 
-use AdamWojs\EzPlatformBundleGenerator\Generator\BundleGenerator;
-use AdamWojs\EzPlatformBundleGenerator\Generator\BundleGeneratorConfiguration;
 use Composer\IO\IOInterface;
 use Composer\Script\Event;
+use Ibexa\Platform\BundleGenerator\Generator\BundleGenerator;
+use Ibexa\Platform\BundleGenerator\Generator\BundleGeneratorConfiguration;
 
 final class ScriptHandler
 {

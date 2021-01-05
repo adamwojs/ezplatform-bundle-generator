@@ -1,13 +1,11 @@
 {
-  "name": "adamwojs/ezplatform-bundle-generator",
+  "name": "ibexa/bundle-generator",
   "license": "GPL-2.0-only",
-  "description": "Symfony Bundle generator for eZ Platform based projects",
+  "description": "Symfony Bundle generator for Ibexa DXP based projects",
   "keywords": [
-    "ezplatform", "symfony"
+    "ibexa", "symfony"
   ],
   "type": "project",
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "require": {
     "php": "^7.3",
     "symfony/console": "^4.3",
@@ -16,12 +14,21 @@
   "require-dev": {
     "composer/composer": "^1.0@dev",
     "phpunit/phpunit": "^8.2",
-    "ezsystems/ezplatform-code-style": "^0.1.0"
+    "ezsystems/ezplatform-code-style": "^0.4.0"
   },
-  "bin": ["bin/ezplatform-bundle-generator"],
+  "bin": ["bin/ibexa-bundle-generator"],
   "autoload": {
     "psr-4": {
-      "AdamWojs\\EzPlatformBundleGenerator\\": "src"
+      "Ibexa\\Platform\\Bundle\\BundleGenerator\\": "src/bundle",
+      "Ibexa\\Platform\\Contracts\\BundleGenerator\\": "src/contracts",
+      "Ibexa\\Platform\\BundleGenerator\\": "src/lib"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Ibexa\\Platform\\Tests\\Bundle\\BundleGenerator\\": "tests/bundle",
+      "Ibexa\\Platform\\Tests\\Integration\\BundleGenerator\\": "tests/integration",
+      "Ibexa\\Platform\\Tests\\BundleGenerator\\": "tests/lib"
     }
   },
   "scripts": {
@@ -29,7 +36,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "1.0.x-dev"
+      "dev-main": "1.0.x-dev"
     }
   }
 }
